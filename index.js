@@ -20,6 +20,7 @@ if (isTouchEvent) {
         ctx.moveTo(lastPos[0], lastPos[1]);
     }
     canvas.ontouchmove = function(e) {
+        e.preventDefault();
         ctx.lineTo(lastPos[0], lastPos[1]);
         ctx.stroke();
         lastPos = [e.touches[0].clientX, e.touches[0].clientY]
@@ -27,6 +28,7 @@ if (isTouchEvent) {
 } else {
     // pc设备
     canvas.onmousedown = (e) => {
+        e.preventDefault();
         painting = true
         lastPos = [e.clientX, e.clientY]
         ctx.beginPath();
